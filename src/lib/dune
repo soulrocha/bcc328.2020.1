@@ -16,5 +16,5 @@
  (flags (
    ;; token declarations in the grammar specification are translated
    ;; into a definition of the token type
-   --only-tokens
+   ; --only-tokens
  )))

@@ -29,10 +29,15 @@ let main () =
   try
     if Cmdline.get_lexer () then
       show_remaining_tokens lexbuf
+    else
+      Parser.exp Lexer.token lexbuf
   with
   | Error.Error (loc, msg) ->
      Format.printf "%a error: %s\n" Location.pp_location loc msg;
      exit 1
+  | Parser.Error ->
+     Format.printf "%a error: syntax\n" Location.pp_position lexbuf.Lexing.lex_curr_p;
+     exit 2
 
 let _ =
   main ()

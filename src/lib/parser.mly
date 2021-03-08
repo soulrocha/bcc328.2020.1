@@ -17,4 +17,8 @@
 %token                 LET
 %token                 IN
 
+%start <unit> exp
+
 %%
+
+exp: LITINT  { () }

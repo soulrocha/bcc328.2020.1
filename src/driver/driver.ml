@@ -30,7 +30,8 @@ let main () =
     if Cmdline.get_lexer () then
       show_remaining_tokens lexbuf
     else
-      Parser.exp Lexer.token lexbuf
+      let ast = Parser.program Lexer.token lexbuf in
+      Format.printf "%s\n" (Absyn.show_lexp ast)
   with
   | Error.Error (loc, msg) ->
      Format.printf "%a error: %s\n" Location.pp_location loc msg;

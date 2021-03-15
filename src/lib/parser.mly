@@ -17,8 +17,15 @@
 %token                 LET
 %token                 IN
 
-%start <unit> exp
+%start <Absyn.lexp> program
+
+%left PLUS
 
 %%
 
-exp: LITINT  { () }
+program:
+| x=exp EOF        { x }
+
+exp:
+| x=LITINT         { ($loc , Absyn.IntExp x) }
+| x=exp PLUS y=exp { ($loc , Absyn.OpExp (Absyn.Plus, x, y)) }

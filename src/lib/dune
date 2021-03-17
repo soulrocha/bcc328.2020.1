@@ -1,6 +1,7 @@
 (library
  (name compiler)
  (wrapped false)
+ (libraries camomile)
  (preprocess
   (staged_pps
     ppx_import

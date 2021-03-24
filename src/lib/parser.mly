@@ -43,5 +43,4 @@ typeid:
 | BOOL x= ID { (Absyn.Bool, x) }
 
 typeids:
-| x=typeid                  { [x] }
-| x=typeid COMMA xs=typeids { x::xs }
+| x=separated_nonempty_list(COMMA, typeid) { x }

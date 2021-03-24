@@ -25,12 +25,15 @@
 %%
 
 program:
-| x=fundec EOF        { x }
+| x=fundec EOF { x }
 
 exp:
-| x=LITINT         { $loc , Absyn.IntExp x }
-| x=exp PLUS y=exp { $loc , Absyn.OpExp (Absyn.Plus, x, y) }
-| x=exp LT y=exp   { $loc , Absyn.OpExp (Absyn.LT, x, y) }
+| x=LITINT                { $loc , Absyn.IntExp x }
+| x=exp op=operator y=exp { $loc , Absyn.OpExp (op, x, y) }
+
+%inline operator:
+| PLUS { Absyn.Plus }
+| LT   { Absyn.LT }
 
 fundec:
 | x=typeid LPAREN p=typeids RPAREN EQ b=exp { $loc , (x, p, b) }

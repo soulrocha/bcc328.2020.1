@@ -18,7 +18,7 @@ pkgs.stdenv.mkDerivation {
     ocamlPackages.ocaml
     ##ocamlPackages.patience_diff
     ocamlPackages.ppx_deriving
-    #ocamlPackages.ppx_expect
+    ocamlPackages.ppx_expect
     ##ocamlPackages.ppx_here
     ocamlPackages.ppx_import
     ocamlPackages.ppxlib # needed by ppx_deriving

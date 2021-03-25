@@ -1,10 +1,13 @@
 (library
  (name compiler)
  (wrapped false)
+ (libraries camomile)
+ (inline_tests)
  (preprocess
   (staged_pps
     ppx_import
-    ppx_deriving.show))
+    ppx_deriving.show
+    ppx_expect))
  (flags
   (:standard -warn-error -A)))
 
@@ -16,5 +19,10 @@
  (flags (
    ;; token declarations in the grammar specification are translated
    ;; into a definition of the token type
-   --only-tokens
- )))
+   ; --only-tokens
+
+   --explain          ; explain conflicts in <basename>.conflicts
+   --dump             ; write an .automaton file
+   ;; --graph            ; write a dependency graph to a .dot file
+   --log-grammar 2    ; 
+)))

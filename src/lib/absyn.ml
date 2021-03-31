@@ -13,6 +13,7 @@ type operator =
 
 type exp =
   | IntExp of int
+  | VarExp of symbol
   | OpExp of operator * lexp * lexp
   [@@deriving show]
 

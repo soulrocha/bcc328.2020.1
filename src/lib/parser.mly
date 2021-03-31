@@ -29,6 +29,7 @@ program:
 
 exp:
 | x=LITINT                { $loc , Absyn.IntExp x }
+| x=ID                    { $loc , Absyn.VarExp x }
 | x=exp op=operator y=exp { $loc , Absyn.OpExp (op, x, y) }
 
 %inline operator:

@@ -17,7 +17,7 @@
 %token                 LET
 %token                 IN
 
-%start <Absyn.lfundec> program
+%start <Absyn.program> program
 
 %nonassoc LT
 %left PLUS
@@ -25,7 +25,7 @@
 %%
 
 program:
-| x=fundec EOF { x }
+| x=nonempty_list(fundec) EOF { x }
 
 exp:
 | x=LITINT                { $loc , Absyn.IntExp x }

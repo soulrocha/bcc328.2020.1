@@ -15,6 +15,7 @@ type exp =
   | IntExp of int
   | VarExp of symbol
   | OpExp of operator * lexp * lexp
+  | IfExp of lexp * lexp * lexp
   [@@deriving show]
 
 and program = lfundec list

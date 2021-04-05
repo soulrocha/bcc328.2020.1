@@ -14,6 +14,10 @@ type operator =
 type exp =
   | IntExp of int
   | OpExp of operator * lexp * lexp
+  | FuncCallExp of symbol * lexp list
+  | DecExp of symbol * lexp * lexp  
+  | CondExp of lexp * lexp * lexp
+  | IdExp of symbol
   [@@deriving show]
 
 and fundec = (type_ * symbol) * (type_ * symbol) list * lexp
@@ -28,4 +32,7 @@ and lexp = exp loc
   [@@deriving show]
 
 and lfundec = fundec loc
+  [@@deriving show]
+  
+and lfundecs = (lfundec list) loc
   [@@deriving show]

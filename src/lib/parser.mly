@@ -19,7 +19,7 @@
 
 %start <Absyn.program> program
 
-%nonassoc ELSE
+%nonassoc ELSE IN
 %nonassoc LT
 %left PLUS
 
@@ -34,6 +34,7 @@ exp:
 | x=exp op=operator y=exp { $loc , Absyn.OpExp (op, x, y) }
 | IF t=exp THEN x=exp ELSE y=exp { $loc , Absyn.IfExp (t, x, y) }
 | f=ID LPAREN a=exps RPAREN { $loc , Absyn.CallExp (f, a) }
+| LET x=ID EQ i=exp IN b=exp { $loc , Absyn.LetExp (x, i, b) }
 
 %inline operator:
 | PLUS { Absyn.Plus }

@@ -17,6 +17,7 @@ type exp =
   | OpExp of operator * lexp * lexp
   | IfExp of lexp * lexp * lexp
   | CallExp of symbol * lexp list
+  | LetExp of symbol * lexp * lexp
   [@@deriving show]
 
 and program = lfundec list

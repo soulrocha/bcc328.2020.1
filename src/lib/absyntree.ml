@@ -32,6 +32,7 @@ let rec tree_of_exp exp =
   | OpExp (op, l, r) -> mktr (sprintf "OpExp %s" (stringfy_operator op)) [tree_of_lexp l; tree_of_lexp r]
   | IfExp (t, x, y) -> mktr "IfExp" [tree_of_lexp t; tree_of_lexp x; tree_of_lexp y]
   | CallExp (f, a) -> mktr (sprintf "CallExp %s" (name f)) (map tree_of_lexp a)
+  | LetExp (x, i, e) -> mktr (sprintf "LetExp %s" (name x)) [tree_of_lexp i; tree_of_lexp e]
 
 and tree_of_fundec (typeid, params, body) =
   mktr
